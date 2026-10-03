@@ -554,18 +554,3 @@ than one million Stars.
 
 ---
 
-## Notes on Reproducibility
-
-- Reachability and probability evaluation are intentionally separated so that
-  the same exact reachable sets can be evaluated under different predicate
-  distributions without repeating neural-network propagation.
-- The ACAS Xu network files used by the experiments are included under
-  `ACASXU/`.
-- The reported probabilities are computed directly on the saved exact-Star
-  geometry.
-- The P3/P4 probability scripts use deterministic numerical quadrature rather
-  than Monte Carlo sampling.
-- The complete parameters of the true distribution, ProbStar approximation,
-  and fitted 10-component Generalized ProbStar GMM are reported above.
-- Runtime and memory measurements depend on hardware and software
-  configuration, so exact resource measurements may differ across systems.
