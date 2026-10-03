@@ -193,12 +193,7 @@ Z_single = 0.9635233710
 The Generalized ProbStar approximation uses a 10-component truncated 5D
 Gaussian mixture fitted by EM:
 
-$$
-q(\alpha)
-=
-\sum_{k=1}^{10}
-\pi_k \mathcal{N}(\alpha;\mu_k,\Sigma_k),
-$$
+$$q(\alpha)=\sum_{k=1}^{10}\pi_k\,\mathcal{N}(\alpha;\mu_k,\Sigma_k)$$
 
 with support restricted to $[-1,1]^5$.
 
