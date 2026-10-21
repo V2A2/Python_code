@@ -81,9 +81,9 @@ The following estimates help artifact evaluators plan their runs. Runtime estima
 | `P3_propagation.py` | 45 | ~17 hours | ~1.5 GB |
 | `P3_unsafe_compute.py` | 45 | ~30 minutes | <500 MB |
 | `P3_full_pipeline.py` | 45 | ~17.5 hours | ~1.5 GB |
-| `P4_propagation.py` | 45 (planned) | ~17 hours | ~1.5 GB |
-| `P4_unsafe_compute.py` | 45 (planned) | ~30 minutes | <500 MB |
-| `P4_full_pipeline.py` | 45 (planned) | ~17.5 hours | ~1.5 GB |
+| `P4_propagation.py` | 9 | ~1 hours | ~0.2 GB |
+| `P4_unsafe_compute.py` | 9 | ~30 minutes | <100 MB |
+| `P4_full_pipeline.py` | 9 | ~1.5 hours | ~0.3 GB |
 
 **Scope of the reported results.** The paper's selected P3 networks account for approximately **6.39 hours** in total, and its six selected P4 networks account for approximately **1 hour**. The approximately **17.5-hour** figure for P3 refers to the full set of 45 networks. The same figure for P4 is a projection **conditional on running the same 45 networks**: both properties use Exact-Star propagation, which dominates the computational cost. The P4 scripts documented in this repository were previously configured for networks **1-4 through 1-9**; a 45-network P4 run requires confirming or changing that selection. Do not interpret the projected 45-network P4 runtime as a measurement of the current six-network script.
 
@@ -414,16 +414,6 @@ The following table compares the unsafe probabilities computed using PS, GPS, an
 | P4 | 1-7 | 100% | 100% | 100% | 0% | 0% |
 | P4 | 1-8 | 100% | 100% | 100% | 0% | 0% |
 | P4 | 1-9 | 100% | 100% | 100% | 0% | 0% |
-
-### Accuracy on the Nontrivial Property-2 Cases
-
-For all six selected Property-2 networks, Generalized ProbStar gives a smaller absolute unsafe-probability error than the original single-Gaussian ProbStar model.
-
-![Verification error comparison](accuracy.png)
-
-The largest reduction occurs for network 4-5, where the absolute error decreases from **1.265%** to **0.149%**. For network 2-2, the error decreases from **0.790%** to **0.014%**. The remaining selected networks show the same trend.
-
-For Properties 3 and 4, the reported cases have unsafe probabilities of either 0% or 100% under all three distributions. These cases confirm the same qualitative verification results across the tested uncertainty models, but they are not used to quantify the improvement in distribution-modeling accuracy.
 
 ### Accuracy on the nontrivial Property-2 cases
 
