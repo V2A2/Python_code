@@ -350,62 +350,80 @@ The figure is intended as a visual comparison of the five
 one-dimensional marginals. The verification experiment itself is
 performed in the full five-dimensional predicate space.
 
+
 ## ACAS Xu Verification Results
 
-We evaluate ProbStar and Generalized ProbStar on ACAS Xu Properties 2,
-3, and 4. The table below reports the number of final reachable Stars,
-total runtime, memory usage, unsafe probabilities, and absolute
-verification errors.
+We evaluate ProbStar (PS) and Generalized ProbStar (GPS) on ACAS Xu Properties 2, 3, and 4. We report the number of final reachable Stars, total runtime, memory usage, unsafe probabilities, and absolute verification errors.
 
-The unsafe-probability error is
+The absolute unsafe-probability error is defined as
 
-\[ e\_{`\mathrm{ver}`{=tex}} = \|p - p\_{`\mathrm{true}`{=tex}}\|, \]
+$$
+e_{\mathrm{ver}} = \left|p - p_{\mathrm{true}}\right|,
+$$
 
-where (p\_{`\mathrm{true}`{=tex}}) is evaluated under the true truncated
-Student-(t) mixture.
+where $p_{\mathrm{true}}$ is the unsafe probability evaluated under the true truncated Student-t mixture.
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Property     Network      #Stars    Time PS   Time GPS  Memory PS Memory GPS   (p\_{`\mathrm{PS}`{=tex}})   (p\_{`\mathrm{GPS}`{=tex}})   (p\_{`\mathrm{true}`{=tex}}) PS Error      GPS
-                                          (s)        (s)       (MB)       (MB)                                                                                                       Error
-  ---------- --------- ----------- ---------- ---------- ---------- ---------- ---------------------------- ----------------------------- ------------------------------ -------- --------
-  P2               2-2     472,257    1.640e5    1.641e5    9739.40    9786.32                       2.655%                        3.458%                         3.445%   0.790%   0.014%
+### Reachability, Runtime, and Memory
 
-  P2               3-5     252,793    5.764e4    5.769e4    4605.07    4651.99                       3.060%                        2.431%                         2.473%   0.587%   0.042%
+The following table reports the final reachable-Star counts, total runtime, and memory usage for PS and GPS.
 
-  P2               4-5   1,003,886    2.880e5    2.881e5   21023.84   21070.76                       2.291%                        3.704%                         3.555%   1.265%   0.149%
+| Property | Network | # Stars | PS Time (s) | GPS Time (s) | PS Memory (MB) | GPS Memory (MB) |
+|:---:|:---:|---:|---:|---:|---:|---:|
+| P2 | 2-2 | 472,257 | 1.640e5 | 1.641e5 | 9739.40 | 9786.32 |
+| P2 | 3-5 | 252,793 | 5.764e4 | 5.769e4 | 4605.07 | 4651.99 |
+| P2 | 4-5 | 1,003,886 | 2.880e5 | 2.881e5 | 21023.84 | 21070.76 |
+| P2 | 5-1 | 475,299 | 1.671e5 | 1.672e5 | 10198.36 | 10245.28 |
+| P2 | 5-4 | 402,853 | 1.301e5 | 1.301e5 | 8191.54 | 8238.46 |
+| P2 | 6-5 | 652,417 | 2.193e5 | 2.193e5 | 13580.24 | 13627.16 |
+| P3 | 1-1 | 70,631 | 8098.693 | 8151.974 | 1123.77 | 1128.51 |
+| P3 | 1-2 | 39,529 | 8533.474 | 8586.755 | 686.03 | 690.77 |
+| P3 | 4-3 | 20,746 | 4748.192 | 4801.473 | 397.38 | 402.12 |
+| P3 | 3-6 | 1,857 | 759.773 | 813.054 | 39.49 | 44.23 |
+| P3 | 1-7 | 500 | 208.800 | 262.089 | 62.39 | 67.43 |
+| P3 | 1-8 | 393 | 172.555 | 225.895 | 64.82 | 69.56 |
+| P3 | 1-9 | 290 | 111.301 | 164.443 | 58.42 | 63.16 |
+| P4 | 1-4 | 1,184 | 285.757 | 338.026 | 21.83 | 67.43 |
+| P4 | 1-5 | 6,608 | 1819.437 | 1869.768 | 133.67 | 181.42 |
+| P4 | 1-6 | 4,443 | 853.274 | 908.955 | 79.15 | 124.27 |
+| P4 | 1-7 | 642 | 128.514 | 185.715 | 11.34 | 61.26 |
+| P4 | 1-8 | 397 | 166.478 | 213.729 | 7.51 | 51.43 |
+| P4 | 1-9 | 471 | 124.378 | 179.259 | 8.43 | 57.15 |
 
-  P2               5-1     475,299    1.671e5    1.672e5   10198.36   10245.28                       0.297%                        0.228%                         0.240%   0.057%   0.012%
+### Unsafe Probabilities and Verification Errors
 
-  P2               5-4     402,853    1.301e5    1.301e5    8191.54    8238.46                       0.101%                        0.028%                         0.030%   0.071%   0.002%
+The following table compares the unsafe probabilities computed using PS, GPS, and the true input distribution. Verification errors are absolute differences from the true unsafe probability, reported in percentage points.
 
-  P2               6-5     652,417    2.193e5    2.193e5   13580.24   13627.16                       2.837%                        2.889%                         2.947%   0.110%   0.058%
+| Property | Network | PS Probability | GPS Probability | True Probability | PS Error | GPS Error |
+|:---:|:---:|---:|---:|---:|---:|---:|
+| P2 | 2-2 | 2.655% | 3.458% | 3.445% | 0.790% | 0.014% |
+| P2 | 3-5 | 3.060% | 2.431% | 2.473% | 0.587% | 0.042% |
+| P2 | 4-5 | 2.291% | 3.704% | 3.555% | 1.265% | 0.149% |
+| P2 | 5-1 | 0.297% | 0.228% | 0.240% | 0.057% | 0.012% |
+| P2 | 5-4 | 0.101% | 0.028% | 0.030% | 0.071% | 0.002% |
+| P2 | 6-5 | 2.837% | 2.889% | 2.947% | 0.110% | 0.058% |
+| P3 | 1-1 | 0% | 0% | 0% | 0% | 0% |
+| P3 | 1-2 | 0% | 0% | 0% | 0% | 0% |
+| P3 | 4-3 | 0% | 0% | 0% | 0% | 0% |
+| P3 | 3-6 | 0% | 0% | 0% | 0% | 0% |
+| P3 | 1-7 | 100% | 100% | 100% | 0% | 0% |
+| P3 | 1-8 | 100% | 100% | 100% | 0% | 0% |
+| P3 | 1-9 | 100% | 100% | 100% | 0% | 0% |
+| P4 | 1-4 | 0% | 0% | 0% | 0% | 0% |
+| P4 | 1-5 | 0% | 0% | 0% | 0% | 0% |
+| P4 | 1-6 | 0% | 0% | 0% | 0% | 0% |
+| P4 | 1-7 | 100% | 100% | 100% | 0% | 0% |
+| P4 | 1-8 | 100% | 100% | 100% | 0% | 0% |
+| P4 | 1-9 | 100% | 100% | 100% | 0% | 0% |
 
-  P3               1-1      70,631   8098.693   8151.974    1123.77    1128.51                           0%                            0%                             0%       0%       0%
+### Accuracy on the Nontrivial Property-2 Cases
 
-  P3               1-2      39,529   8533.474   8586.755     686.03     690.77                           0%                            0%                             0%       0%       0%
+For all six selected Property-2 networks, Generalized ProbStar gives a smaller absolute unsafe-probability error than the original single-Gaussian ProbStar model.
 
-  P3               4-3      20,746   4748.192   4801.473     397.38     402.12                           0%                            0%                             0%       0%       0%
+![Verification error comparison](accuracy.png)
 
-  P3               3-6       1,857    759.773    813.054      39.49      44.23                           0%                            0%                             0%       0%       0%
+The largest reduction occurs for network 4-5, where the absolute error decreases from **1.265%** to **0.149%**. For network 2-2, the error decreases from **0.790%** to **0.014%**. The remaining selected networks show the same trend.
 
-  P3               1-7         500    208.800    262.089      62.39      67.43                         100%                          100%                           100%       0%       0%
-
-  P3               1-8         393    172.555    225.895      64.82      69.56                         100%                          100%                           100%       0%       0%
-
-  P3               1-9         290    111.301    164.443      58.42      63.16                         100%                          100%                           100%       0%       0%
-
-  P4               1-4       1,184    285.757    338.026      21.83      67.43                           0%                            0%                             0%       0%       0%
-
-  P4               1-5       6,608   1819.437   1869.768     133.67     181.42                           0%                            0%                             0%       0%       0%
-
-  P4               1-6       4,443    853.274    908.955      79.15     124.27                           0%                            0%                             0%       0%       0%
-
-  P4               1-7         642    128.514    185.715      11.34      61.26                         100%                          100%                           100%       0%       0%
-
-  P4               1-8         397    166.478    213.729       7.51      51.43                         100%                          100%                           100%       0%       0%
-
-  P4               1-9         471    124.378    179.259       8.43      57.15                         100%                          100%                           100%       0%       0%
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+For Properties 3 and 4, the reported cases have unsafe probabilities of either 0% or 100% under all three distributions. These cases confirm the same qualitative verification results across the tested uncertainty models, but they are not used to quantify the improvement in distribution-modeling accuracy.
 
 ### Accuracy on the nontrivial Property-2 cases
 
