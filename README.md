@@ -434,22 +434,15 @@ same qualitative verification result across the tested uncertainty
 models, but they are not used to quantify the distribution-modeling
 accuracy improvement.
 
+
 ## Scalability
 
-The reachability geometry is identical for PS and GPS. The difference
-appears in distribution fitting and probability evaluation.
+The reachability geometry is identical for ProbStar (PS) and Generalized ProbStar (GPS). The difference lies in distribution fitting and probability evaluation.
 
-For large reachability problems, exact ReLU reachability dominates the
-total runtime and memory cost. This is visible in the large P2 cases.
-For example, network 4-5 generates more than one million Stars, and the
-total runtimes are (2.880`\times10`{=tex}\^5) s for PS and
-(2.881`\times10`{=tex}\^5) s for GPS. The corresponding memory
-measurements are 21023.84 MB and 21070.76 MB.
+For large verification problems, exact ReLU reachability dominates the total runtime and memory cost. For example, ACAS Xu network 4-5 generates more than one million reachable Stars. The total runtimes are approximately **2.880 × 10⁵ s** for PS and **2.881 × 10⁵ s** for GPS. The corresponding memory usage is **21,023.84 MB** and **21,070.76 MB**, respectively.
 
-For smaller problems, the additional probability-modeling cost of GPS is
-more visible. The results therefore support **similar scalability on
-reachability-dominated verification problems**, rather than claiming
-identical computational cost.
+For smaller problems, the additional cost of GPS probability evaluation becomes more noticeable. Overall, the results show that GPS has **similar scalability to PS for reachability-dominated verification problems**, although the two methods do not have identical computational costs.
+
 
 ## Running the Experiments
 
