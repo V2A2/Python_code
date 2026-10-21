@@ -36,8 +36,8 @@ from numpy.polynomial.legendre import leggauss
 # Configuration
 # ============================================================
 
-RESULTS_ROOT = Path("results")
-START_NETWORK = 1
+RESULTS_ROOT = Path("P4_result")
+START_NETWORK = 4
 END_NETWORK = 9
 
 PKL_NAME = "acasxu_reachable_stars.pkl"

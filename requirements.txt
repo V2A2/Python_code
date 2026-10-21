@@ -1,0 +1,6 @@
+# Tested package versions reported for the artifact environment.
+# Python: 3.13.12 (install separately; not specified by pip requirements).
+numpy==2.5.2
+scipy==1.18.1
+scikit-learn==1.9.1
+matplotlib==3.11.2

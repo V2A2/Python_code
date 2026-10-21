@@ -1,5 +1,6 @@
 import time
 import tracemalloc
+import sys
 
 import numpy as np
 from scipy.stats import multivariate_t, multivariate_normal
@@ -10,7 +11,9 @@ from sklearn.mixture import GaussianMixture
 # Configuration
 # ============================================================
 
-rng = np.random.default_rng()
+SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 38
+
+rng = np.random.default_rng(SEED)
 
 DIM = 5
 N_SAMPLES = 10_0000
@@ -221,7 +224,7 @@ print(
 gmm = GaussianMixture(
     n_components=N_GMM_COMPONENTS,
     covariance_type="full",
-    random_state=None,
+    random_state=SEED,
     n_init=10,
     max_iter=1000,
     tol=1e-6,
@@ -273,7 +276,7 @@ gmm_covs = gmm_covs[order]
 
 print("Estimating TV distances...")
 
-tv_rng = np.random.default_rng()
+tv_rng = np.random.default_rng(SEED)
 
 # Common uniform Monte Carlo points
 X = tv_rng.uniform(
@@ -386,7 +389,7 @@ tv_gmm = (
     * BOX_VOLUME
     * np.mean(
         np.abs(
-            (p_true - p_gmm)/N_GMM_COMPONENTS
+            (p_true - p_gmm)
                      )
     )
 )

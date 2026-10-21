@@ -53,7 +53,7 @@ from scipy.optimize import linprog
 # Batch configuration: network IDs use row-major order:
 # 1=(1,1), 2=(1,2), ..., 9=(1,9), 10=(2,1), ..., 45=(5,9).
 TARGET_NETWORKS = [4, 5, 6, 7, 8, 9]
-RESULTS_ROOT = Path("results_property4")
+RESULTS_ROOT = Path("P4_result")
 
 # These names are reassigned for each network inside run_one_network().
 MAT_FILE = "ACASXU_run2a_1_1_batch_2000.mat"
@@ -997,16 +997,16 @@ def save_stars_pkl(
                 network["layer_sizes"]
             ),
 
-        "property2_raw_lb":
+        "property4_raw_lb":
             PROPERTY4_RAW_LB,
 
-        "property2_raw_ub":
+        "property4_raw_ub":
             PROPERTY4_RAW_UB,
 
-        "property2_x_lb":
+        "property4_x_lb":
             PROPERTY4_X_LB,
 
-        "property2_x_ub":
+        "property4_x_ub":
             PROPERTY4_X_UB,
 
         "initial_c":

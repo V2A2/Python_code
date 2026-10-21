@@ -36,7 +36,7 @@ from numpy.polynomial.legendre import leggauss
 # Configuration
 # ============================================================
 
-RESULTS_ROOT = Path("results")
+RESULTS_ROOT = Path("P3_result")
 START_NETWORK = 1
 END_NETWORK = 45
 

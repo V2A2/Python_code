@@ -52,9 +52,9 @@ from scipy.optimize import linprog
 
 # Batch configuration: network IDs use row-major order:
 # 1=(1,1), 2=(1,2), ..., 9=(1,9), 10=(2,1), ..., 45=(5,9).
-START_NETWORK = 2
+START_NETWORK = 1
 END_NETWORK = 45
-RESULTS_ROOT = Path("results")
+RESULTS_ROOT = Path("P3_result")
 
 # These names are reassigned for each network inside run_one_network().
 MAT_FILE = "ACASXU_run2a_1_1_batch_2000.mat"
@@ -2069,7 +2069,7 @@ def main():
         run_one_network(network_id, mat_path, output_dir)
 
         print("#" * 100)
-        print(f"COMPLETED NETWORK {network_id}/45  ->  results/{network_id}/")
+        print(f"COMPLETED NETWORK {network_id}/45  ->  {RESULTS_ROOT}/{network_id}/")
         print("#" * 100)
 
 
